@@ -1,0 +1,95 @@
+@import '../../utils/vars';
+@import '../../utils/extends';
+@import '../../utils/mixins';
+
+
+.BlockInput {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (max-width: 660px) {
+    gap: 15px;
+  }
+
+  &__word {
+    display: flex;
+    gap: 15px;
+
+    @media screen and (max-width: 660px) {
+      gap: 10px;
+    }
+  }
+
+  &__result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    @media screen and (max-width: 660px) {
+      height: 30px;
+      font-size: 28px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    right: 0;
+
+    @media screen and (min-width: 661px) and (max-width: 810px) {
+      bottom: 67px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include btn($sizeBtn-50, $sizeBtn-50);
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    box-shadow: $shadow;
+    transition: all 0.3s;
+
+    @media screen and (max-width: 660px) {
+      @include btn(25px, 25px);
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    @media screen and (min-width: 661px) and (max-width: 810px) {
+      @include btn($sizeBtn-35, $sizeBtn-35);
+      font-size: 19px;
+      border-radius: 6px;
+      bottom: 67px;
+    }
+
+    &:active {
+      box-shadow: inset $shadow;
+    }
+
+    &--enter {
+      background-color: $colorGreen;
+      &:hover {
+        background-color: $colorGreen-hover;
+      }
+    }
+
+    &--reset {
+      background-color: $colorReset;
+      &:hover {
+        background-color: $colorReset-hover;
+      }
+    }
+  }
+}

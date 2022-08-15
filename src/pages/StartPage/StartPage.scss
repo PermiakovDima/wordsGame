@@ -1,0 +1,141 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.StartPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__name-game {
+    padding: 70px 0 190px 0;
+    display: flex;
+    gap: 30px;
+
+    @media (max-width: 400px) {
+      gap: 14px;
+      padding-top: 20px;
+      padding-bottom: 150px;
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 600px) {
+      gap: 13px;
+      padding-top: 20px;
+      padding-bottom: 100px;
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+      gap: 15px;
+      padding-top: 22px;
+      padding-bottom: 120px;
+    }
+
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+      padding-bottom: 120px;
+    }
+  }
+  
+  &__title {
+    display: flex;
+    gap: 15px;
+    font-weight: 600;
+
+    @media (max-width: 400px) {
+      gap: 6px;
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 600px) {
+      gap:4px;
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+      gap: 11px;
+    }
+  }
+
+  &__subtitle {
+    font-family: 'Pacifico', cursive;
+    color: $darkBlue;
+    position: relative;
+    bottom: -30px;
+    font-size: 50px;
+
+    @media (max-width: 400px) {
+      font-size: 16px;
+      bottom: -4px;
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 600px) {
+      font-size: 22px;
+      bottom: -10px;
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+      font-size: 27px;
+      bottom: -13px;
+    }
+
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+      font-size: 42px;
+      bottom: -10px;
+    }
+  }
+  
+  &__letter {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #fff;
+    background-color: $darkBlue;
+    border-radius: 15px;
+    @include btn($sizeBtn-90, $sizeBtn-90);
+
+    @media (max-width: 400px) {
+      font-size: 12px;
+      @include btn(20px, 20px);
+      border-radius: 4px;
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 600px) {
+      font-size: 16px;
+      border-radius: 6px;
+      @include btn(27px, 27px);
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+      font-size: 23px;
+      border-radius: 11px;
+      @include btn(40px, 40px);
+    }
+
+    @media screen and (min-width: 1001px) and (max-width: 1200px) {
+      font-size: 33px;
+      @include btn(60px, 60px);
+    }
+  }
+
+  &__menu {
+    width: 400px;
+
+    @media (max-width: 400px) {
+      width: 200px;
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 600px) {
+      width: 200px;
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 1000px) {
+      width: 250px;
+    }
+  }
+
+  &__warning {
+    padding-top: 30px;
+    font-size: 12px;
+    max-width: 400px;
+    color: $darkBlue;
+    font-weight: bold;
+  }
+}

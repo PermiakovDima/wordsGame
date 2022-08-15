@@ -1,0 +1,156 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.GameTabel {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+
+  &__word {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__header-panel {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__answers {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    gap: 5px;
+    height: 189px;
+    font-weight: 800;
+  }
+
+  &__answer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 40px;
+  }
+
+  &__hidden-answer {
+    border-radius: 50%;
+    @include btn(9px, 9px);
+    box-shadow: inset 0 0 0 3px $darkBlue;
+
+    @media screen and (max-width: 660px) {
+      @include btn(5px, 5px);
+      box-shadow: inset 0 0 0 2px #4849af;
+    }
+  }
+
+  &__answer-view {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: $darkBlue;
+
+    @media screen and (max-width: 660px) {
+      font-size: 16px;
+    }
+  }
+
+  &__levels {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 30px;
+    font-size: 16px;
+  }
+
+  &__level {
+    display: flex;
+  }
+
+  &__level-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -3px;
+    width: 40px;
+    color: $darkBlue;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid $darkBlue;
+    border-radius: 0px 6px 6px 0px;
+  }
+
+  &__level-name {
+    display: flex;
+    align-items: center;
+    background-color: $darkBlue;
+    border-radius: 6px 6px 6px 6px;
+    padding: 0 15px;
+    height: 40px;
+    text-transform: uppercase;
+    color: $colorWhite;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  &__btn-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include btn($sizeBtn-40, $sizeBtn-40);
+    border-radius: 6px;
+    background-color: $darkBlue;
+    color: $colorWhite;
+    font-size: 23px;
+    box-shadow: $shadow;
+    transition: all 0.3s;
+
+    &--float {
+      z-index: 1;
+    }
+
+    &:hover {
+      background-color: $darkBlue-hover;
+    }
+
+    &:active {
+      box-shadow: inset $shadow;
+    }
+  }
+
+  &__letters {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__help {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: 40px;
+    border: 3px solid $darkBlue;
+    padding: 0 10px;
+
+    & i::before {
+      color: $darkBlue;
+      font-size: 20px;
+    }
+
+    &--three-stars {
+      border-color: $colorGreen;
+      
+      & i::before {
+        color: $colorGreen;
+      }
+    }
+  }
+}

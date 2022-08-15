@@ -1,0 +1,47 @@
+@import '../../utils/vars';
+@import '../../utils/mixins';
+
+.LetterButton {
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+    @include btn($sizeBtn-50, $sizeBtn-50);
+    background-color: $darkBlue;
+    color: $colorWhite;
+    border-radius: 12px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: $shadow;
+    transition: all 0.3s;
+
+    @media screen and (max-width: 660px){
+      @include btn(25px, 25px);
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    @media screen and (min-width: 661px) and (max-width: 810px) {
+      @include btn($sizeBtn-35, $sizeBtn-35);
+      font-size: 19px;
+      border-radius: 6px;
+    }
+
+    &:hover {
+      background-color: $darkBlue-hover;
+    }
+
+    &--isActive {
+      background-color:$darkBlue-hover;
+      box-shadow: inset $shadow;
+    }
+  }
+
+  &__check {
+    display: none;
+  }
+}

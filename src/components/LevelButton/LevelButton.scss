@@ -1,0 +1,36 @@
+@import '../../utils/vars';
+
+.LevelButton {
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 35px;
+    border: 3px solid $darkBlue;
+    border-radius: 6px 6px 0 0;
+    font-size: 25px;
+    color: $darkBlue;
+    font-weight: 700;
+
+    &--three-stars {
+      border: 3px solid $colorGreen;
+      color: $colorGreen;
+    }
+  }
+
+  &__stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    background-color: $darkBlue;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+
+    &--three-stars {
+      background-color: $colorGreen;
+    }
+  }
+}

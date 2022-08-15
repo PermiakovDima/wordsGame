@@ -1,0 +1,37 @@
+@import '../../utils/vars';
+
+.StartButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $colorStartBtn;
+  border-radius: 12px;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 46px;
+  font-weight: 800;
+  padding: 5px;
+  box-shadow: 0 0 5px 0 black;
+  transition: all 0.3s;
+
+  @media (max-width: 400px) {
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 401px) and (max-width: 600px) {
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 1000px) {
+    font-size: 31px;
+  }
+
+  &:hover {
+    background: $colorStartBtn-hover;
+    box-shadow: 0 0 8px 0 black;
+  }
+
+  &:active {
+    box-shadow: inset $shadow;
+  }
+}

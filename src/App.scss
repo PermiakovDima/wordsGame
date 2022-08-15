@@ -1,0 +1,14 @@
+.App {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('../public/imgs/Pattern.png');
+  background-size: 60px;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+}
