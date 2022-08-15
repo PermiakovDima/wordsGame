@@ -9,7 +9,7 @@ export const StartButton: React.FC = () => {
       to="level"
       className="StartButton"
     >
-      <i className="icon-ant-design_star-filled"></i>
+      <i className="icon-Vector"></i>
       Грати
       <i className="icon-Vector"></i>
     </NavLink>
