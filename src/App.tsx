@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { StartPage } from './pages/StartPage';
+import { LevelPage } from './pages/LevelPage';
+import { GameTabel } from './pages/GameTabel';
 
-function App() {
+import { Levels } from './api/levels';
+
+
+import './App.scss';
+import './styles/main.scss';
+
+export const App: React.FC = () => {
+  const [gameDate, setGameDate] = useState<Level[] | []>([]);
+  const checkProgres = localStorage.getItem('wordsGame');
+
+  useEffect(() => {
+    if (!checkProgres) {
+      localStorage.setItem('wordsGame', JSON.stringify(Levels));
+      setGameDate(Levels);
+    } else {
+      const newGameDate = JSON.parse(checkProgres);
+
+      setGameDate(newGameDate);
+    }
+  }, [checkProgres]);
+
+  console.log(gameDate)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <Routes >
+          <Route path="/" element={<StartPage />} />
+          <Route path="level" element={<LevelPage levels={gameDate} />} />
+          <Route path="level/:levelNumber" element={<GameTabel levels={gameDate} countLevels={gameDate.length} />} />
+        </Routes>
+      </div>
     </div>
   );
 }
-
-export default App;
