@@ -123,6 +123,7 @@
 
     @media screen and (max-height: 418px) {
       @include btn(25px, 25px);
+      font-size: 14px;
     }
 
     &--float {
