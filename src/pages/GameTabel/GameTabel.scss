@@ -61,6 +61,10 @@
     gap: 10px;
     padding-bottom: 30px;
     font-size: 16px;
+
+    @media screen and (max-height: 418px) {
+      padding-bottom: 10px;
+    }
   }
 
   &__level {
@@ -79,6 +83,11 @@
     font-weight: 700;
     border: 2px solid $darkBlue;
     border-radius: 0px 6px 6px 0px;
+
+    @media screen and (max-height: 418px) {
+      font-size: 12px;
+      left: -5px;
+    }
   }
 
   &__level-name {
@@ -92,6 +101,12 @@
     color: $colorWhite;
     font-weight: 800;
     letter-spacing: 1px;
+    font-size: 16px;
+
+    @media screen and (max-height: 418px) {
+      height: 25px;
+      font-size: 12px;
+    }
   }
 
   &__btn-nav {
@@ -105,6 +120,10 @@
     font-size: 23px;
     box-shadow: $shadow;
     transition: all 0.3s;
+
+    @media screen and (max-height: 418px) {
+      @include btn(25px, 25px);
+    }
 
     &--float {
       z-index: 1;
@@ -147,7 +166,7 @@
 
     &--three-stars {
       border-color: $colorGreen;
-      
+
       & i::before {
         color: $colorGreen;
       }
