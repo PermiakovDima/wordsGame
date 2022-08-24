@@ -160,9 +160,18 @@
     border: 3px solid $darkBlue;
     padding: 0 10px;
 
+    @media screen and (max-height: 418px) {
+      height: 25px;
+      font-size: 14px;
+    }
+
     & i::before {
       color: $darkBlue;
       font-size: 20px;
+
+      @media screen and (max-height: 418px) {
+        font-size: 14px;
+      }
     }
 
     &--three-stars {

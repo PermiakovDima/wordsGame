@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { BlockImput } from '../../components/BlockInput';
 import { WindowHelper } from '../../components/WindowHelper';
+import { ActionWindow } from '../../components/ActionWindow';
 
 import './GameTabel.scss';
 
@@ -16,6 +17,7 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
   const [allLevels, setAllLevels] = useState<Level[]>();
   const [selectLevel, setSelectLevel] = useState<Level>();
   const [openerHelp, setOpenerHelp] = useState<boolean>(false);
+  const [opennerActions, setOpenerActions] = useState<string>('');
 
   const location = useLocation();
 
@@ -35,15 +37,25 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
 
   const word = selectLevel?.word.split('');
 
+  const turnOffOpennerAction = () => {
+    setTimeout(() => {
+      setOpenerActions('');
+      }, 3000)
+  }
+
   const updateWord = (answer: string) => {
     const variabalesFromLevel = selectLevel?.variabales.includes(answer);
     const answersFromLevel = selectLevel?.answers.includes(answer);
 
     if (variabalesFromLevel) {
       if (answersFromLevel) {
-        console.log('coppy')
+        setOpenerActions('Це слово ви вже записали.');
+        turnOffOpennerAction();
+        return;
       } else {
         selectLevel?.answers.push(answer);
+        setOpenerActions('Слово довавлено.');
+        turnOffOpennerAction();
         if (getLocalStorage) {
           const qwe = JSON.parse(getLocalStorage);
           qwe.map((el: Level) => {
@@ -56,8 +68,11 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
           localStorage.setItem('wordsGame', JSON.stringify(qwe))
           setAllLevels(qwe)
         }
+        return;
       }
     }
+    setOpenerActions('Спробуйте ввести інше слово.');
+    turnOffOpennerAction();
   }
 
   let oneStar = false;
@@ -70,10 +85,18 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
     oneStar = selectLevel.variabales.length / 5 < selectLevel.answers.length;
   }
 
+  let randomNumber = 0;
+
+  if (selectLevel) {
+    randomNumber = Math.floor(Math.random() * selectLevel.variabales.length);
+  }
+
+  const helpWords = selectLevel?.variabales[randomNumber];
 
   return (
     <div className="GameTabel">
-      {openerHelp && <WindowHelper />}
+      {opennerActions && <ActionWindow actions={opennerActions} /> }
+      {openerHelp && <WindowHelper helpWords={helpWords} />}
       <div className="GameTabel__header-panel">
         <div className="GameTabel__levels">
           <NavLink
@@ -116,21 +139,22 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
           >
             {
               openerHelp
-              ? 'X'
-              : <i className="icon-idea-1-Traced"></i>
+                ? 'X'
+                : <i className="icon-idea-1-Traced"></i>
             }
-            
+
           </button>
         </div>
       </div>
       <div className="GameTabel__answers">
-        {selectLevel?.variabales.map((el, ind) => {
-          return <div key={ind} className="GameTabel__answer">
-            {selectLevel.answers.includes(el)
-              ? <p className="GameTabel__answer-view">{el}</p>
-              : el.split('').map((chur, ind) => <p className="GameTabel__hidden-answer" key={ind + chur}></p>)}
-          </div>
-        })}
+        {selectLevel?.variabales
+          .map((el, ind) => {
+            return <div key={ind} className="GameTabel__answer">
+              {selectLevel.answers.includes(el)
+                ? <p className="GameTabel__answer-view">{el}</p>
+                : el.split('').map((chur, ind) => <p className="GameTabel__hidden-answer" key={ind + chur}></p>)}
+            </div>
+          })}
       </div>
       <div className="GameTabel__letters">
         <BlockImput word={word} updateWord={updateWord} />

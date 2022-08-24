@@ -16,13 +16,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(173, 169, 169);
-    border: 3px solid $darkBlue;
+    background-color: #fff;
     border-radius: 6px;
-    width: 300px;
-    height: 200px;
+    max-width: 400px;
+    width: 100%;
     box-shadow: $shadow;
-    font-size: 30px;
+    font-size: 25px;
+    padding: 30px;
     color: $darkBlue;
 
     & p {

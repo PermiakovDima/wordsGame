@@ -25,8 +25,6 @@ export const App: React.FC = () => {
     }
   }, [checkProgres]);
 
-  console.log(gameDate)
-
   return (
     <div className="App">
       <div className="container">
