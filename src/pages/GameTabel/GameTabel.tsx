@@ -54,7 +54,7 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
         return;
       } else {
         selectLevel?.answers.push(answer);
-        setOpenerActions('Слово довавлено.');
+        setOpenerActions('Слово зараховано.');
         turnOffOpennerAction();
         if (getLocalStorage) {
           const parseLacal = JSON.parse(getLocalStorage);

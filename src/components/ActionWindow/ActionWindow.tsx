@@ -8,8 +8,8 @@ type Props = {
 }
 
 export const ActionWindow: React.FC<Props> = ({ actions }) => {
-  const added = actions === 'Слово довавлено.';
-  const error = actions !== 'Слово довавлено.';
+  const added = actions === 'Слово зараховано.';
+  const error = actions !== 'Слово зараховано.';
 
   return (
     <div className={classNames("ActionWindow",
