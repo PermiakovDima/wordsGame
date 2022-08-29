@@ -40,7 +40,7 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
   const turnOffOpennerAction = () => {
     setTimeout(() => {
       setOpenerActions('');
-      }, 3000)
+    }, 3000)
   }
 
   const updateWord = (answer: string) => {
@@ -57,16 +57,17 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
         setOpenerActions('Слово довавлено.');
         turnOffOpennerAction();
         if (getLocalStorage) {
-          const qwe = JSON.parse(getLocalStorage);
-          qwe.map((el: Level) => {
+          const parseLacal = JSON.parse(getLocalStorage);
+          parseLacal.map((el: Level, ind: number) => {
             if (el.name === selectLevel?.name) {
-              el.answers.push(answer)
+              el.answers.push(answer);
+              parseLacal.slice(ind, 1);
             }
             return el;
           })
 
-          localStorage.setItem('wordsGame', JSON.stringify(qwe))
-          setAllLevels(qwe)
+          localStorage.setItem('wordsGame', JSON.stringify(parseLacal))
+          setAllLevels(parseLacal)
         }
         return;
       }
@@ -85,18 +86,33 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
     oneStar = selectLevel.variabales.length / 5 < selectLevel.answers.length;
   }
 
-  let randomNumber = 0;
 
-  if (selectLevel) {
-    randomNumber = Math.floor(Math.random() * selectLevel.variabales.length);
+
+  const randomHelper = () => {
+    let randomNumber = 0;
+
+    if (selectLevel?.answers.length === selectLevel?.variabales.length) {
+      return -1;
+    }
+
+    if (selectLevel) {
+      randomNumber = Math.floor(Math.random() * (selectLevel.variabales.length - 0)) + 0;
+
+      if (selectLevel.answers.includes(selectLevel.variabales[randomNumber])) {
+        randomHelper();
+        return randomNumber;
+      }
+    }
+
+    return randomNumber;
   }
 
-  const helpWords = selectLevel?.variabales[randomNumber];
+  const helpWords = randomHelper();
 
   return (
     <div className="GameTabel">
-      {opennerActions && <ActionWindow actions={opennerActions} /> }
-      {openerHelp && <WindowHelper helpWords={helpWords} />}
+      {opennerActions && <ActionWindow actions={opennerActions} />}
+      {openerHelp && <WindowHelper helpWords={selectLevel?.variabales[helpWords]} />}
       <div className="GameTabel__header-panel">
         <div className="GameTabel__levels">
           <NavLink

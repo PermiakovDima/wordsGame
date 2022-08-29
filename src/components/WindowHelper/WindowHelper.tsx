@@ -20,7 +20,10 @@ export const WindowHelper: React.FC<Props> = ({ helpWords }) => {
   return (
     <div className="WindowHelper">
       <div className="WindowHelper__block">
-        <p>{word}</p>
+        {word
+          ? <p>{word}</p>
+          : <p>Мої вітання!!! Ви відгадали всі слова, перейдіть до наступного
+            уровня.</p>}
       </div>
     </div>
   )
