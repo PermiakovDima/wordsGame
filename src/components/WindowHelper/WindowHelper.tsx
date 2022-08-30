@@ -23,7 +23,7 @@ export const WindowHelper: React.FC<Props> = ({ helpWords }) => {
         {word
           ? <p>{word}</p>
           : <p>Мої вітання!!! Ви відгадали всі слова, перейдіть до наступного
-            уровня.</p>}
+            рівня.</p>}
       </div>
     </div>
   )

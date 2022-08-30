@@ -92,6 +92,7 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
     let randomNumber = 0;
 
     if (selectLevel?.answers.length === selectLevel?.variabales.length) {
+      console.log('+')
       return -1;
     }
 
@@ -103,6 +104,8 @@ export const GameTabel: React.FC<Props> = ({ levels, countLevels }) => {
         return randomNumber;
       }
     }
+
+    console.log(randomNumber)
 
     return randomNumber;
   }
